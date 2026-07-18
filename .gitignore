@@ -1,0 +1,10 @@
+# Exported contact backups
+conference-contacts-*.json
+
+# Personal contact exports and ad-hoc data files
+*contacts*.json
+*.contacts.json
+
+# OS/editor files
+.DS_Store
+Thumbs.db

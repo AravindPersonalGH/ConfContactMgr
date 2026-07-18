@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Conference Contact Manager</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app" aria-labelledby="page-title">
+    <header class="app-header">
+      <div class="header-row">
+        <h1 id="page-title">Conference Contact Manager</h1>
+        <p class="saved-count">Saved Contacts: <span id="saved-count">0</span></p>
+      </div>
+      <nav class="top-actions" aria-label="Primary actions">
+        <button id="btn-show-add" type="button" class="btn btn-primary" aria-pressed="true">Add Contact</button>
+        <button id="btn-show-list" type="button" class="btn" aria-pressed="false">Show Contacts</button>
+        <button id="btn-import" type="button" class="btn">Import Contacts</button>
+        <button id="btn-export" type="button" class="btn">Export Contacts</button>
+        <button id="btn-clear-all" type="button" class="btn btn-danger">Clear All</button>
+      </nav>
+    </header>
+
+    <section id="add-view" class="panel" aria-labelledby="add-view-title">
+      <h2 id="add-view-title">Add Contact</h2>
+      <form id="contact-form" novalidate>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="name">Full Name <span aria-hidden="true">*</span></label>
+            <input id="name" name="name" type="text" required autocomplete="name" />
+          </div>
+
+          <div class="form-field">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" autocomplete="organization" />
+          </div>
+
+          <div class="form-field">
+            <label for="phone">Phone Number</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" />
+          </div>
+
+          <div class="form-field">
+            <label for="jobTitle">Job Title</label>
+            <input id="jobTitle" name="jobTitle" type="text" autocomplete="organization-title" />
+          </div>
+
+          <div class="form-field">
+            <label for="email">Email Address</label>
+            <input id="email" name="email" type="email" autocomplete="email" />
+          </div>
+
+          <div class="form-field">
+            <label for="conference">Conference or Event</label>
+            <input id="conference" name="conference" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label for="vendors">Vendors (comma-separated)</label>
+            <input id="vendors" name="vendors" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label for="location">Location</label>
+            <input id="location" name="location" type="text" />
+          </div>
+
+          <div class="form-field">
+            <label for="dateMet">Date Met</label>
+            <input id="dateMet" name="dateMet" type="date" />
+          </div>
+
+          <div class="form-field form-field-notes">
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" rows="5"></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button id="btn-save" type="submit" class="btn btn-primary">Save Contact</button>
+          <button id="btn-clear-form" type="button" class="btn">Clear Form</button>
+          <button id="btn-update" type="submit" class="btn btn-primary hidden">Update Contact</button>
+          <button id="btn-cancel-edit" type="button" class="btn hidden">Cancel Edit</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="list-view" class="panel hidden" aria-labelledby="list-view-title">
+      <h2 id="list-view-title">Show Contacts</h2>
+      <div class="form-field search-field">
+        <label for="search-input">Search Contacts</label>
+        <input id="search-input" type="search" placeholder="Search by name, phone, email, company, job title, vendors, conference, location, or notes" />
+      </div>
+      <div id="no-contacts-message" class="info-box">No contacts found.</div>
+      <div id="contacts-list" class="contacts-list" aria-live="polite"></div>
+    </section>
+
+    <input id="import-file-input" type="file" accept=".json,application/json" class="hidden" />
+
+    <section id="status-region" class="status" role="status" aria-live="polite" aria-atomic="true">
+      Info: Ready.
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
